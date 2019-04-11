@@ -1,0 +1,15 @@
+version: "3.5"
+
+services:
+  handle_server:
+    image: openbookpublishers/handle_server
+    container_name: "handle_server"
+    restart: always
+    volumes:
+      - config:/hs
+      - /etc/localtime:/etc/localtime:ro
+    ports:
+      - 2461:2461
+
+volumes:
+  config:
