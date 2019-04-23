@@ -29,6 +29,22 @@ services:
     ports:
       - 2461:2461
 
+  handle_db:
+    image: openbookpublishers/handle_db
+    container_name: "handle_db"
+    restart: always
+    volumes:
+      - db:/var/lib/postgresql/data
+      - /etc/localtime:/etc/localtime:ro
+    env_file:
+      - ./config/db.env
+
 volumes:
   config:
+  db:
 ```
+
+The use of a database is optional. If you do use the provided postgres database, you must also configure the credentials in `config.dct` - refer to [openbookpublishers/handle_db][1] or [the technical manual][2].
+
+[1]: https://github.com/OpenBookPublishers/handle_db  "Handle db repo"
+[2]: http://www.handle.net/tech_manual/HN_Tech_Manual_9.pdf "Handle technical manual"
