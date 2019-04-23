@@ -6,11 +6,6 @@ ENV HANDLE_V 9.1.0
 ENV PSQL_V 42.1.4
 ENV MYSQL_V 5.1.44
 
-EXPOSE 2461/tcp
-EXPOSE 2461/udp
-EXPOSE 80/tcp
-EXPOSE 443/tcp
-
 RUN apt-get update && apt-get install -y --no-install-recommends curl
 
 WORKDIR /usr/src
@@ -32,6 +27,11 @@ RUN curl -fsSL -o ${DOWNHOME}/mysql.tar.gz \
 RUN curl -fsSL -o lib/postgresql-${PSQL_V}.jar \
      "https://jdbc.postgresql.org/download/postgresql-${PSQL_V}.jar"
 RUN rm -rf ${DOWNHOME}
+
+EXPOSE 2641/tcp
+EXPOSE 2641/udp
+EXPOSE 80/tcp
+EXPOSE 443/tcp
 
 VOLUME /hs
 
