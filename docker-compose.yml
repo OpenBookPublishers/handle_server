@@ -11,5 +11,16 @@ services:
     ports:
       - 2461:2461
 
+  handle_db:
+    image: openbookpublishers/handle_db
+    container_name: "handle_db"
+    restart: always
+    volumes:
+      - db:/var/lib/postgresql/data
+      - /etc/localtime:/etc/localtime:ro
+    env_file:
+      - ./config/db.env
+
 volumes:
   config:
+  db:

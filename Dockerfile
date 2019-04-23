@@ -8,8 +8,8 @@ ENV MYSQL_V 5.1.44
 
 EXPOSE 2461/tcp
 EXPOSE 2461/udp
-EXPOSE 8000/tcp
-
+EXPOSE 80/tcp
+EXPOSE 443/tcp
 
 RUN apt-get update && apt-get install -y --no-install-recommends curl
 
